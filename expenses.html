@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Despesas - MyFinances</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script> </head>
+
+<body>
+  <div class="header-bar">
+    <div class="brand-container">
+      <div class="brand-logo">💸</div>
+      <div class="brand-name">MyFinances</div>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Buscar despesas..." />
+      </div>
+      <div>🔔</div>
+      <div class="user-profile">
+        <div class="user-avatar">MT</div>
+        <div>Matheus Tavares</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <a class="nav-item" href="index.html">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Painel</div>
+    </a>
+    <a class="nav-item active" href="expenses.html">
+      <div class="nav-icon">💰</div>
+      <div class="nav-label">Despesas</div>
+    </a>
+    <a class="nav-item" href="investments.html">
+      <div class="nav-icon">📈</div>
+      <div class="nav-label">Investimentos</div>
+    </a>
+    <a class="nav-item" href="goals.html">
+      <div class="nav-icon">🎯</div>
+      <div class="nav-label">Metas</div>
+    </a>
+    <a class="nav-item" href="planning.html">
+      <div class="nav-icon">📅</div>
+      <div class="nav-label">Planejamento</div>
+    </a>
+  </div>
+
+  <div class="main-content">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">Despesas Mensais</h1>
+        <p class="dashboard-subtitle">Acompanhe suas despesas e reduza gastos</p>
+      </div>
+      <div style="display: flex">
+        <div class="filter-button secondary-filter-button" id="adicionarValorDespesaBtn" style="background-color: #ff9800; margin-right: 15px;">Adicionar Lançamento ✏️</div>
+        <div class="filter-button" id="novaMetaGastoBtn">+ Nova Meta de Gasto 🎯</div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="performance-container" style="grid-column: span 12">
+        <div class="goal-progress" id="expenseGoalsContainer"> <div class="goal-item" data-category="Moradia" data-limit="3500" data-current="1200" data-color="blue" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Moradia</div>
+                <button class="delete-button" data-type="expense" data-name="Moradia">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 1.200</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-blue" style="width: 35%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-category="Alimentação" data-limit="3500" data-current="950" data-color="purple" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Alimentação</div>
+                <button class="delete-button" data-type="expense" data-name="Alimentação">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 950</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-purple" style="width: 27%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-category="Transporte" data-limit="3500" data-current="600" data-color="green" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Transporte</div>
+                <button class="delete-button" data-type="expense" data-name="Transporte">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 600</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-green" style="width: 17%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-category="Lazer" data-limit="3333.33" data-current="700" data-color="orange" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Lazer</div>
+                <button class="delete-button" data-type="expense" data-name="Lazer">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 700</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-orange" style="width: 21%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+          <h2>Total de Despesas: <span style="color:#9370db;" id="total-expenses-display">R$ 3.450,00</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="modalNovaMetaGasto" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Criar Nova Meta de Gasto 🎯</h2>
+    <p>Defina um limite de gasto mensal para uma categoria.</p>
+    
+    <label for="novaMetaNome">Nome da Categoria</label>
+    <input
+      type="text"
+      id="novaMetaNome"
+      placeholder="Ex: Assinaturas, Viagens..."
+      style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <label for="novaMetaLimite">Limite Mensal</label>
+    <input
+      type="number"
+      id="novaMetaLimite"
+      placeholder="R$ 1.000,00"
+      style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <label for="novaMetaCor">Cor de Destaque (Gráfico)</label>
+    <select
+      id="novaMetaCor"
+      style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    >
+        <option value="blue">Azul</option>
+        <option value="purple">Roxo</option>
+        <option value="green">Verde</option>
+        <option value="orange">Laranja</option>
+        <option value="red">Vermelho</option>
+    </select>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px">
+      <button id="cancelarNovaMeta" class="secondary-button">Cancelar</button>
+      <button id="confirmarNovaMeta" class="primary-button">Criar Meta</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalAdicionarValorDespesa" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Adicionar Lançamento ✏️</h2>
+    <p>Selecione a meta de gasto e o valor do lançamento (use valor negativo para estorno).</p>
+    
+    <label for="categoriaAdicionarValor">Meta de Gasto</label>
+    <select id="categoriaAdicionarValor" style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;">
+      </select>
+
+    <label for="valorAdicionarDespesa">Valor do Lançamento (Use negativo para estorno)</label>
+    <input
+      type="number"
+      id="valorAdicionarDespesa"
+      placeholder="R$ 0,00"
+      style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px">
+      <button id="cancelarAdicionarValor" class="secondary-button">Cancelar</button>
+      <button id="confirmarAdicionarValor" class="primary-button">Confirmar Lançamento</button>
+    </div>
+  </div>
+</div>
+
+<div id="deleteConfirmationModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 style="color: #e53935;">Confirmar Exclusão ⚠️</h2>
+        <p>Você tem certeza que deseja apagar permanentemente: <strong><span id="itemToDeleteName"></span></strong>?</p>
+        <p>Esta ação não pode ser desfeita.</p>
+        
+        <div style="display: flex; justify-content: flex-end; gap: 10px">
+            <button id="cancelDeleteBtn" class="secondary-button">Cancelar</button>
+            <button id="confirmDeleteBtn" class="primary-button" style="background-color: #e53935;">Apagar Permanentemente</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

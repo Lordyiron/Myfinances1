@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investimentos - MyFinances</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script> </head>
+
+<body>
+  <div class="header-bar">
+    <div class="brand-container">
+      <div class="brand-logo">💸</div>
+      <div class="brand-name">MyFinances</div>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Buscar investimentos..." />
+      </div>
+      <div>🔔</div>
+      <div class="user-profile">
+        <div class="user-avatar">MT</div>
+        <div>Matheus Tavares</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <a class="nav-item" href="index.html">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Painel</div>
+    </a>
+    <a class="nav-item" href="expenses.html">
+      <div class="nav-icon">💰</div>
+      <div class="nav-label">Despesas</div>
+    </a>
+    <a class="nav-item active" href="investments.html">
+      <div class="nav-icon">📈</div>
+      <div class="nav-label">Investimentos</div>
+    </a>
+    <a class="nav-item" href="goals.html">
+      <div class="nav-icon">🎯</div>
+      <div class="nav-label">Metas</div>
+    </a>
+    <a class="nav-item" href="planning.html">
+      <div class="nav-icon">📅</div>
+      <div class="nav-label">Planejamento</div>
+    </a>
+  </div>
+
+  <div class="main-content">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">Investimentos</h1>
+        <p class="dashboard-subtitle">Monitore seus rendimentos e carteira</p>
+      </div>
+      
+      <div style="display: flex">
+        <div class="filter-button secondary-filter-button" id="adicionarValorInvestimentoBtn" style="background-color: #43a047; margin-right: 15px;">Adicionar Saldo ➕</div>
+        <div class="filter-button" id="novoInvestimentoBtn">+ Novo Investimento ✨</div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="performance-container" style="grid-column: span 12">
+        <div class="goal-progress" id="investmentsGoalsContainer"> <div class="goal-item" data-title="CDB Banco Inter" data-value="4500" data-color="blue" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">CDB Banco Inter</div>
+                <button class="delete-button" data-type="investment" data-name="CDB Banco Inter">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 4.500</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-blue" style="width: 35%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-title="Tesouro Direto" data-value="3000" data-color="purple" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Tesouro Direto</div>
+                <button class="delete-button" data-type="investment" data-name="Tesouro Direto">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 3.000</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-purple" style="width: 24%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-title="Ações" data-value="2800" data-color="green" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Ações</div>
+                <button class="delete-button" data-type="investment" data-name="Ações">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 2.800</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-green" style="width: 22%"></div>
+            </div>
+          </div>
+
+          <div class="goal-item" data-title="Fundos Imobiliários" data-value="2400" data-color="orange" data-initialized="true">
+            <div class="goal-header">
+              <div class="goal-title-container">
+                <div class="goal-title">Fundos Imobiliários</div>
+                <button class="delete-button" data-type="investment" data-name="Fundos Imobiliários">🗑️</button>
+              </div>
+              <div class="goal-value">R$ 2.400</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-orange" style="width: 19%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <h2>Total Investido:</h2>
+          <p style="font-size: 24px; font-weight: bold; color: #43a047;">R$ 12.700,00</p>
+          <p style="color: #8a94a6;">+5,3% de rendimento no mês</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div id="modalNovoInvestimento" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Adicionar Novo Investimento ✨</h2>
+    <p>Registre um novo ativo na sua carteira de investimentos.</p>
+    
+    <label for="novoInvestimentoNome">Nome / Ativo</label>
+    <input
+      type="text"
+      id="novoInvestimentoNome"
+      placeholder="Ex: Ação VALE3, Fundo Imobiliário XPTO11..."
+      style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <label for="novoInvestimentoValorInicial">Valor Inicial Investido</label>
+    <input
+      type="number"
+      id="novoInvestimentoValorInicial"
+      placeholder="R$ 1.000,00"
+      style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <label for="novoInvestimentoCor">Cor de Destaque (Gráfico)</label>
+    <select
+      id="novoInvestimentoCor"
+      style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    >
+        <option value="blue">Azul</option>
+        <option value="purple">Roxo</option>
+        <option value="green">Verde</option>
+        <option value="orange">Laranja</option>
+        <option value="red">Vermelho</option>
+    </select>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px">
+      <button id="cancelarNovoInvestimento" class="secondary-button">Cancelar</button>
+      <button id="confirmarNovoInvestimento" class="primary-button">Registrar Investimento</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="modalAdicionarValorInvestimento" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Adicionar Saldo a Investimento 💰</h2>
+    <p>Selecione o investimento e o valor a ser adicionado (use valor negativo para retirada).</p>
+    
+    <label for="investimentoSelect">Investimento</label>
+    <select id="investimentoSelect" style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;">
+      </select>
+
+    <label for="valorAdicionarInvestimento">Valor a Adicionar (Use negativo para retirada)</label>
+    <input
+      type="number"
+      id="valorAdicionarInvestimento"
+      placeholder="R$ 0,00"
+      style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 8px;"
+    />
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px">
+      <button id="cancelarAdicionarValorInvestimento" class="secondary-button">Cancelar</button>
+      <button id="confirmarAdicionarValorInvestimento" class="primary-button">Confirmar Adição</button>
+    </div>
+  </div>
+</div>
+
+<div id="deleteConfirmationModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 style="color: #e53935;">Confirmar Exclusão ⚠️</h2>
+        <p>Você tem certeza que deseja apagar permanentemente: <strong><span id="itemToDeleteName"></span></strong>?</p>
+        <p>Esta ação não pode ser desfeita.</p>
+        
+        <div style="display: flex; justify-content: flex-end; gap: 10px">
+            <button id="cancelDeleteBtn" class="secondary-button">Cancelar</button>
+            <button id="confirmDeleteBtn" class="primary-button" style="background-color: #e53935;">Apagar Permanentemente</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planejamento - MyFinances</title>
+  <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header-bar">
+    <div class="brand-container">
+      <div class="brand-logo">💸</div>
+      <div class="brand-name">MyFinances</div>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Buscar planejamento..." />
+      </div>
+      <div>🔔</div>
+      <div class="user-profile">
+        <div class="user-avatar">MT</div>
+        <div>Matheus Tavares</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a class="nav-item" href="index.html">
+      <div class="nav-icon">📊</div>
+      <div class="nav-label">Painel</div>
+    </a>
+    <a class="nav-item" href="expenses.html">
+      <div class="nav-icon">💰</div>
+      <div class="nav-label">Despesas</div>
+    </a>
+    <a class="nav-item" href="investments.html">
+      <div class="nav-icon">📈</div>
+      <div class="nav-label">Investimentos</div>
+    </a>
+    <a class="nav-item" href="goals.html">
+      <div class="nav-icon">🎯</div>
+      <div class="nav-label">Metas</div>
+    </a>
+    <a class="nav-item active" href="planning.html">
+      <div class="nav-icon">📅</div>
+      <div class="nav-label">Planejamento</div>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-title">Planejamento Financeiro</h1>
+        <p class="dashboard-subtitle">
+          Acompanhe como seu dinheiro é distribuído e mantenha suas finanças equilibradas
+        </p>
+      </div>
+      <div class="filter-button">+ Novo Planejamento</div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="performance-container" style="grid-column: span 12">
+        <div class="goal-progress">
+
+          <!-- Receita Total -->
+          <div class="goal-item">
+            <div class="goal-header">
+              <div class="goal-title">Receita Mensal</div>
+              <div class="goal-value">R$ 6.100</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-green" style="width: 100%"></div>
+            </div>
+            <p style="font-size: 13px; color: #8a94a6;">Rendimento total do mês</p>
+          </div>
+
+          <!-- Despesas -->
+          <div class="goal-item">
+            <div class="goal-header">
+              <div class="goal-title">Despesas Totais</div>
+              <div class="goal-value">R$ 3.450 / R$ 6.100</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-red" style="width: 56%"></div>
+            </div>
+            <p style="font-size: 13px; color: #8a94a6;">Gastos com moradia, alimentação e lazer</p>
+          </div>
+
+          <!-- Poupança -->
+          <div class="goal-item">
+            <div class="goal-header">
+              <div class="goal-title">Poupança Mensal</div>
+              <div class="goal-value">R$ 1.800 / R$ 2.000</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-orange" style="width: 90%"></div>
+            </div>
+            <p style="font-size: 13px; color: #8a94a6;">Meta de economia mensal quase atingida 🎯</p>
+          </div>
+
+          <!-- Saldo Livre -->
+          <div class="goal-item">
+            <div class="goal-header">
+              <div class="goal-title">Saldo Livre</div>
+              <div class="goal-value">R$ 850</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress progress-blue" style="width: 14%"></div>
+            </div>
+            <p style="font-size: 13px; color: #8a94a6;">Valor disponível após despesas e poupança</p>
+          </div>
+        </div>
+
+        <!-- Resumo Final -->
+        <div style="margin-top: 40px; text-align: center;">
+          <h2>Resumo Financeiro de Novembro</h2>
+          <p style="font-size: 18px; color: #8a94a6; margin-top: 10px;">
+            <b>Receita:</b> R$ 6.100 &nbsp;|&nbsp;
+            <b>Despesas:</b> R$ 3.450 &nbsp;|&nbsp;
+            <b>Poupança:</b> R$ 1.800 &nbsp;|&nbsp;
+            <b>Saldo Livre:</b> R$ 850
+          </p>
+          <p style="margin-top: 10px; color: #43a047; font-weight: bold;">
+            💰 Suas finanças estão equilibradas!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

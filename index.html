@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyFinances Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+      <script src="script.js"></script>
+    <style>
+      .period-tab {
+        cursor: pointer;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .period-tab.active {
+        background-color: #4169e1;
+        color: white;
+      }
+
+      .donut-total {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .donut-label {
+        font-size: 13px;
+        color: #8a94a6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Bar -->
+    <div class="header-bar">
+      <div class="brand-container">
+        <div class="brand-logo">💸</div>
+        <div class="brand-name">MyFinances</div>
+      </div>
+
+      <div class="header-actions">
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" placeholder="Buscar despesas, metas..." />
+        </div>
+
+        <div>🔔</div>
+
+        <div class="user-profile">
+          <div class="user-avatar">MT</div>
+          <div>Matheus Tavares</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a class="nav-item active" href="index.html">
+        <div class="nav-icon">📊</div>
+        <div class="nav-label">Painel</div>
+      </a>
+
+      <a class="nav-item" href="expenses.html">
+        <div class="nav-icon">💰</div>
+        <div class="nav-label">Despesas</div>
+      </a>
+
+      <a class="nav-item" href="investments.html">
+        <div class="nav-icon">📈</div>
+        <div class="nav-label">Investimentos</div>
+      </a>
+
+      <a class="nav-item" href="goals.html">
+        <div class="nav-icon">🎯</div>
+        <div class="nav-label">Metas</div>
+      </a>
+
+      <a class="nav-item" href="planning.html">
+        <div class="nav-icon">📅</div>
+        <div class="nav-label">Planejamento</div>
+      </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dashboard-title">Minhas Análises Financeiras</h1>
+          <p class="dashboard-subtitle">
+            Acompanhe seus gastos, ganhos e evolução financeira
+          </p>
+        </div>
+
+        <div style="display: flex">
+          <div class="date-filter">
+            <span>Novembro 2025</span>
+            <span style="margin-left: 10px">▼</span>
+          </div>
+
+          <div class="filter-button">
+            <span>Aplicar Filtros</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="dashboard-grid">
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon blue-gradient">💵</div>
+            <div class="stat-title">Saldo Atual</div>
+            <div class="stat-value">R$ 8.250,00</div>
+            <div class="stat-badge badge-blue">+R$ 850 de saldo livre</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon purple-gradient">📉</div>
+            <div class="stat-title">Despesas Totais</div>
+            <div class="stat-value">R$ 3.450,00</div>
+            <div class="stat-badge badge-purple">56% da receita mensal</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon green-gradient">📈</div>
+            <div class="stat-title">Investimentos</div>
+            <div class="stat-value">R$ 12.700,00</div>
+            <div class="stat-badge badge-green">+5.3% de rendimento</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon orange-gradient">🎯</div>
+            <div class="stat-title">Meta de Poupança</div>
+            <div class="stat-value">R$ 1.800 / R$ 2.000</div>
+            <div class="stat-badge badge-orange">90% atingido</div>
+          </div>
+        </div>
+
+        <!-- Revenue Chart -->
+        <div class="revenue-chart-container">
+          <div class="chart-header">
+            <div class="chart-title">Distribuição de Gastos</div>
+            <div class="period-tabs">
+              <div class="period-tab active" data-period="mensal">Mensal</div>
+              <div class="period-tab" data-period="semanal">Semanal</div>
+              <div class="period-tab" data-period="anual">Anual</div>
+            </div>
+          </div>
+
+          <div class="revenue-chart">
+            <div class="circular-chart">
+              <div class="donut-chart">
+                <div class="donut-hole">
+                  <div class="donut-total" id="total-despesas">R$ 3.450</div>
+                  <div class="donut-label">Total de Despesas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-legend" id="chart-legend">
+            <!-- Legenda preenchida dinamicamente -->
+          </div>
+        </div>
+
+        <!-- Performance Container -->
+        <div class="performance-container">
+          <div class="chart-header">
+            <div class="chart-title">Metas Financeiras</div>
+            <div>💹</div>
+          </div>
+
+          <div class="goal-progress">
+            <div class="goal-item">
+              <div class="goal-header">
+                <div class="goal-title">Poupança Mensal</div>
+                <div class="goal-value">R$ 1.800 / R$ 2.000</div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress progress-blue" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div class="goal-item">
+              <div class="goal-header">
+                <div class="goal-title">Gastos Essenciais</div>
+                <div class="goal-value">R$ 2.300 / R$ 3.000</div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress progress-purple" style="width: 76%"></div>
+              </div>
+            </div>
+
+            <div class="goal-item">
+              <div class="goal-header">
+                <div class="goal-title">Investimentos Acumulados</div>
+                <div class="goal-value">R$ 12.700 / R$ 15.000</div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress progress-green" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="display: flex; justify-content: space-between; margin-top: 40px;"
+          >
+            <div style="text-align: center; flex: 1">
+              <div style="font-size: 32px; font-weight: 700; color: #4169e1">
+                5
+              </div>
+              <div style="font-size: 14px; color: #8a94a6">Metas Alcançadas</div>
+            </div>
+
+            <div style="text-align: center; flex: 1">
+              <div style="font-size: 32px; font-weight: 700; color: #43a047">
+                R$ 850
+              </div>
+              <div style="font-size: 14px; color: #8a94a6">Saldo Livre</div>
+            </div>
+
+            <div style="text-align: center; flex: 1">
+              <div style="font-size: 32px; font-weight: 700; color: #ff9800">
+                R$ 0
+              </div>
+              <div style="font-size: 14px; color: #8a94a6">Gastos Pendentes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const data = {
+        semanal: {
+          total: 850,
+          categorias: [
+            { nome: "Alimentação", valor: 320, cor: "#9370db" },
+            { nome: "Transporte", valor: 180, cor: "#43a047" },
+            { nome: "Lazer", valor: 200, cor: "#ff9800" },
+            { nome: "Outros", valor: 150, cor: "#4169e1" },
+          ],
+        },
+        mensal: {
+          total: 3450,
+          categorias: [
+            { nome: "Moradia", valor: 1200, cor: "#4169e1" },
+            { nome: "Alimentação", valor: 950, cor: "#9370db" },
+            { nome: "Transporte", valor: 600, cor: "#43a047" },
+            { nome: "Lazer", valor: 700, cor: "#ff9800" },
+          ],
+        },
+        anual: {
+          total: 41400,
+          categorias: [
+            { nome: "Moradia", valor: 14400, cor: "#4169e1" },
+            { nome: "Alimentação", valor: 11400, cor: "#9370db" },
+            { nome: "Transporte", valor: 7200, cor: "#43a047" },
+            { nome: "Lazer", valor: 8400, cor: "#ff9800" },
+          ],
+        },
+      };
+
+      const totalElement = document.getElementById("total-despesas");
+      const legendElement = document.getElementById("chart-legend");
+      const tabs = document.querySelectorAll(".period-tab");
+
+      function atualizarGrafico(periodo) {
+        const info = data[periodo];
+        totalElement.textContent = `R$ ${info.total.toLocaleString("pt-BR")}`;
+
+        legendElement.innerHTML = info.categorias
+          .map(
+            (cat) => `
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: ${cat.cor}"></div>
+            <div>${cat.nome}: R$ ${cat.valor.toLocaleString("pt-BR")} (${(
+              (cat.valor / info.total) *
+              100
+            ).toFixed(1)}%)</div>
+          </div>`
+          )
+          .join("");
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          atualizarGrafico(tab.dataset.period);
+        });
+      });
+
+      atualizarGrafico("mensal");
+    </script>
+  </body>
+</html>
